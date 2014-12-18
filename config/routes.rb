@@ -8,13 +8,17 @@ Examplea::Application.routes.draw do
     end
   apipie
   namespace :api do
-    
-
     namespace :v1 do
       
         resources :examaobjectmodels
       
     end # v1
+
+    namespace :v2 do
+      
+        resources :examaobjectmodels
+      
+    end # v2
 
     # Mount rails engine gems.
     
