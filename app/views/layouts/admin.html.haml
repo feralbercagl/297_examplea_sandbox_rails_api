@@ -1,0 +1,29 @@
+!!!
+%html{lang: 'en', 'xml:lang' => 'en', xmlns: 'http://www.w3.org/1999/xhtml'}
+  %head
+    %title Examplea
+    = stylesheet_link_tag 'admin'
+    = javascript_include_tag 'admin'
+    = csrf_meta_tags
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
+  %body
+    .header
+      - if current_admin
+        .navbar.navbar-inverse
+          .navbar-header
+            %button.navbar-toggle{data: {toggle: 'collapse', target: '.navbar-ex1-collapse'}}
+              %span.sr-only Toggle navigation
+              %span.fa.fa-bars
+            .navbar-brand
+              API v1
+          .collapse.navbar-collapse.navbar-ex1-collapse
+            %ul.nav.navbar-nav
+              %li= link_to 'Home', main_app.admin_root_path
+              %li= link_to 'Documentation', main_app.apipie_path
+              %li= link_to 'Extensions', main_app.admin_extensions_path
+            %ul.nav.navbar-nav.pull-right
+              %li= link_to current_admin.email, main_app.edit_admin_registration_path
+              %li= link_to "Sign out", main_app.destroy_admin_session_path, :method => :delete
+    
+    .container
+      = yield

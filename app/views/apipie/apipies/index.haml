@@ -1,0 +1,36 @@
+%ul.breadcrumb
+  %li.active API Documentation
+
+= row do
+  = col_md 3 do
+    %ul.nav.nav-pills.nav-stacked
+      - i = 0
+      - @doc[:resources].sort_by(&:first).each do |key, api|
+        %li{class: i == 0 ? 'active' : ''}
+          %a{href: "##{key}", data: {toggle: 'tab'}}= key.humanize.titleize
+        - i = i + 1
+  = col_md 9 do
+    .tab-content
+      - i = 0
+      - @doc[:resources].sort_by(&:first).each do |key, api|
+        .tab-pane{id: key, class: i == 0 ? 'active' : ''}
+          %table.table.table-striped
+            %thead
+              %tr
+                %th.text-right Method
+                %th Resource
+                %th Description
+                %th
+            %tbody
+              - api[:methods].each do |m|
+                - m[:apis].each do |a|
+                  %tr
+                    %td.text-right
+                      %code= a[:http_method]
+                    %td
+                      %a.text-mono{href: "#{m[:doc_url]}.html"}= a[:api_url]
+                    %td
+                      = a[:short_description]
+                    %td
+                      %a{href: "#{m[:doc_url]}.html", class: 'btn btn-mini'} Learn&nbsp;More
+        - i = i + 1

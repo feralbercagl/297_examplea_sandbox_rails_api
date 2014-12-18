@@ -1,0 +1,18 @@
+%ul.breadcrumb
+  %li
+    = link_to 'Home', admin_root_path
+    
+  %li
+    
+    = link_to 'Examaobjectmodels', admin_examaobjectmodels_path
+    
+    
+  %li
+    = link_to 'Examaobjectmodel', admin_examaobjectmodel_path(@examaobjectmodel)
+    
+  %li.active Edit
+
+.page-header
+  %h1 Edit Examaobjectmodel
+
+= render 'form'

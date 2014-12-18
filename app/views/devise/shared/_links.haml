@@ -1,0 +1,11 @@
+- if controller_name != 'sessions'
+  = btn_link_to 'Sign in', {controller: 'admins/sessions', action: :new}, type: :link
+
+- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
+  = btn_link_to 'Forgot your password?', {controller: 'devise/passwords', action: :new}, type: :link
+
+- if devise_mapping.confirmable? && controller_name != 'confirmations'
+  = btn_link_to 'Didn\'t receive confirmation instructions?', {controller: 'devise/confirmations', action: :new}, type: :link
+
+- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks'
+  = btn_link_to 'Didn\'t receive unlock instructions?', {controller: 'devise/unlocks', action: :new}, type: :link

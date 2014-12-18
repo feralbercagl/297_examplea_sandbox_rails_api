@@ -1,0 +1,30 @@
+.page-header
+  %h1 Welcome
+= row do
+  = col_md 7 do
+    %p.lead
+      Welcome to the admin console.  From here you can manage admin users,
+      application data, extensions, and view API documentation.
+  = col_md 5 do
+    = panel heading: 'Base API' do
+      %code https://obscure-harbor-6682.herokuapp.com/api/v1
+
+
+= row do
+  = col_md 7 do
+    = table do
+      %thead
+        %tr
+          %th Object
+          %th.text-right Count
+      %tbody
+        
+        %tr
+          
+          %td= link_to 'Examaobjectmodels', admin_examaobjectmodels_path
+          
+          %td.text-right
+            
+            .text-muted= V1::Examaobjectmodel.count
+            
+        

@@ -1,0 +1,15 @@
+- params.each do |param|
+  %tr
+    %td
+      %code= param[:full_name]
+    %td
+      - if !param[:validator].blank?
+        %code= param[:validator].downcase.sub 'must be', ''
+    %td.text-center
+      - if param[:required]
+        %span.label.label-important required
+    %td.text-center
+      - if param[:allow_nil]
+        %span.label may be nil
+    %td= param[:description].html_safe
+  = render(:partial => "params", :locals => {:params => param[:params]}) unless param[:params].blank?

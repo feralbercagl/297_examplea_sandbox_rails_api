@@ -1,0 +1,30 @@
+%ul.breadcrumb
+  %li
+    %a= link_to 'API Documentation', apipie_path
+    
+  %li.active Resource Detail
+
+- @method[:apis].each do |api|
+  .page-header
+    %h1.text-mono= api[:api_url]
+  .well.well-small
+    %dl.dl-horizontal
+      %dt Method
+      %dd.text-mono= api[:http_method]
+      %dt Resource
+      %dd
+        %code= api[:api_url]
+      %dt Description
+      %dd= raw api[:short_description]
+
+- if !@method[:params].blank?
+  %table.table.table-striped
+    %thead
+      %tr
+        %th Parameter Name
+        %th
+        %th
+        %th
+        %th Description
+    %tbody
+      = render(:partial => "params", :locals => {:params => @method[:params]})

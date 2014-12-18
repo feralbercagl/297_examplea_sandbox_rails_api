@@ -1,0 +1,22 @@
+= simple_form_for(@examaobjectmodel, :html => {class: 'form-horizontal'}, as: :examaobjectmodel, url: @examaobjectmodel.new_record? ? admin_examaobjectmodels_path : admin_examaobjectmodel_path(@examaobjectmodel)) do |f|
+  = f.error_notification
+  
+  
+
+  
+  
+  
+  = f.input :creation_date, required: false
+  
+  
+  
+  
+  = f.input :name, required: true
+  
+  
+  
+  .form-actions
+    = btn_submit f, 'Submit'
+    
+    = link_to 'Cancel', admin_examaobjectmodels_path, class: 'btn'
+    

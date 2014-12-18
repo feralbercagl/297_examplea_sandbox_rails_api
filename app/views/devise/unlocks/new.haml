@@ -1,0 +1,10 @@
+%h2 Resend Unlock Instructions
+
+= simple_form_for resource, url: unlock_path(resource_name) do |f|
+  = f.error_notification
+  = f.error :base
+  
+  = f.input :email, autofocus: true, wrapper: :bootstrap_basic
+  = btn_submit f, 'Send now'
+  
+= render 'devise/shared/links'

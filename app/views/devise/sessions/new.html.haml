@@ -1,0 +1,14 @@
+= panel heading: 'Sign In' do
+  = simple_form_for resource, url: session_path(resource_name) do |f|
+    = f.error_notification
+    = f.error :base
+  
+    = f.input :email, autofocus: true, wrapper: :bootstrap_basic
+    = f.input :password, label: 'Password', wrapper: :bootstrap_basic
+    
+    - if devise_mapping.rememberable?
+      = f.input :remember_me, as: :boolean, wrapper: :naked_checkbox
+    
+    = btn_submit f, 'Log in'
+  
+= render 'devise/shared/links'

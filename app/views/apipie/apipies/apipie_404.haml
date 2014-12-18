@@ -1,0 +1,23 @@
+%ul.breadcrumb
+  %li
+    %a= link_to 'API Documentation', apipie_path
+    
+  %li.active Not Found
+
+.page-header
+  %h1
+    Oops!
+    %small
+      - if @resource == 'null'
+        Resource
+        %code= params[:resource]
+        not found
+      - else
+        Method
+        %code= params[:method]
+        not found for resource
+        %code= params[:resource]
+
+%p
+  You can start over:
+  %a{href: "#{@doc[:doc_url]}.html", class: 'btn'} go to documentation home

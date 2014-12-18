@@ -1,0 +1,63 @@
+.row
+  .col-md-3
+    = render partial: 'admin/admin_sidebar', locals: { active: 'examaobjectmodels' }
+  .col-md-9
+    %ul.breadcrumb
+      %li
+        = link_to 'Home', admin_root_path
+      %li.active Examaobjectmodels
+    
+    .page-header
+      %h1 Examaobjectmodels
+      %a.btn.btn-primary{href: new_admin_examaobjectmodel_path}
+        %i.fa.fa-plus
+        New
+
+    - unless @examaobjectmodels.empty?
+      = table do
+        %thead
+          %tr
+            
+            
+            
+            
+            %th Creation Date
+            
+            
+            
+            %th Name
+            
+            
+            %td
+        %tbody
+          - @examaobjectmodels.each do |examaobjectmodel|
+            %tr
+              
+              
+              
+              
+              %td= link_to (examaobjectmodel.creation_date or ''), admin_examaobjectmodel_path(examaobjectmodel)
+              
+              
+              
+              %td= link_to (examaobjectmodel.name or ''), admin_examaobjectmodel_path(examaobjectmodel)
+              
+              
+              %td.text-center
+                %a{href: edit_admin_examaobjectmodel_path(examaobjectmodel), rel: 'tooltip', title: 'Edit'}
+                  %i.fa.fa-pencil
+                &nbsp;
+                &nbsp;
+                %a{href: admin_examaobjectmodel_path(examaobjectmodel), data: {confirm: 'Are you sure?', method: 'delete'}, rel: 'tooltip nofollow', title: 'Delete'}
+                  %i.fa.fa-trash-o
+      
+      .text-center
+        = pagination do
+          - available_pages.each do |page_num|
+            = pagination_link page_num, admin_examaobjectmodels_path(:page => page_num)
+      
+    - else
+      .alert
+        %h4 No Examaobjectmodels yet
+        There are no Examaobjectmodels to list.
+        = link_to 'Create a new one', new_admin_examaobjectmodel_path, class: 'btn btn-mini'

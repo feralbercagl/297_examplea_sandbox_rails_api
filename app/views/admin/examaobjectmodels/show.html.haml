@@ -1,0 +1,31 @@
+%ul.breadcrumb
+  %li
+    = link_to 'Home', admin_root_path
+    
+  %li
+    
+    = link_to 'Examaobjectmodels', admin_examaobjectmodels_path
+    
+    
+  %li.active Examaobjectmodel
+
+.page-header
+  %h1 Examaobjectmodel
+  %a.btn.btn-primary{href: edit_admin_examaobjectmodel_path(@examaobjectmodel)}
+    %i.fa.fa-pencil
+    Edit
+
+= table do
+  
+  %tr
+    %td Id
+    %td= @examaobjectmodel.id
+  
+  %tr
+    %td Creation Date
+    %td= @examaobjectmodel.creation_date
+  
+  %tr
+    %td Name
+    %td= @examaobjectmodel.name
+  
