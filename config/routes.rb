@@ -14,11 +14,17 @@ Examplea::Application.routes.draw do
       
     end # v1
 
-    namespace :v2 do
+namespace :v2 do
       
         resources :examaobjectmodels
       
     end # v2
+
+    namespace :v3 do
+      
+        resources :examaobjectmodels
+      
+    end # v3
 
     # Mount rails engine gems.
     
